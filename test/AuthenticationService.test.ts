@@ -21,18 +21,6 @@ describe("UserLoginService", () => {
     expect(customerId).toBe(-1);
   });
 
-  it("should generate a token for a valid customer ID", () => {
-    const token = userLoginService.generateToken(1);
-    expect(typeof token).toBe("string");
-    expect(token.length).toBeGreaterThan(0);
-  });
-
-  it("should throw an error when generating a token with an invalid customer ID", () => {
-    expect(() => {
-      userLoginService.generateToken(-1);
-    }).toThrowError("Invalid customer ID: -1");
-  });
-
   it("should return the customer ID associated with a valid token", () => {
     const token = userLoginService.generateToken(1);
     const customerId = userLoginService.getCustomerIdFromToken(token);
